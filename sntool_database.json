@@ -1,0 +1,70 @@
+import json
+
+data = {
+    "tool_info": {
+        "name": "SNTool (Sustainable Neighbourhoods Tool)",
+        "author": "Andrea Moro",
+        "organization": "iiSBE Italia R&D",
+        "description": "ابزاری برای ارزیابی پایداری و تاب‌آوری اقلیمی در محیط‌های ساخته شده در مقیاس محله."
+    },
+    "assessment_scales": [
+        {"name": "SBTool", "scale": "Building scale", "description": "مقیاس ساختمان"},
+        {"name": "SNTool", "scale": "Neighbourhood scale", "description": "مقیاس محله"},
+        {"name": "SCTool", "scale": "City scale", "description": "مقیاس شهر"}
+    ],
+    "hierarchical_structure": {
+        "levels": ["Issue (موضوع کلی)", "Category (جنبه‌های خاص)", "Criterion (ورودی ارزیابی)", "Indicator (شاخص کمی یا کیفی)"]
+    },
+    "sntool_issues": [
+        {"id": "A", "name": "Use of land and biodiversity", "categories_count": 3},
+        {"id": "B", "name": "Energy", "categories_count": 3},
+        {"id": "C", "name": "Water", "categories_count": 3},
+        {"id": "D", "name": "Solid Waste", "categories_count": 2},
+        {"id": "E", "name": "Environmental quality", "categories_count": 4},
+        {"id": "F", "name": "Transportation and mobility", "categories_count": 4},
+        {"id": "G", "name": "Social Aspects", "categories_count": 10},
+        {"id": "H", "name": "Economy", "categories_count": 4},
+        {"id": "I", "name": "Climate Change", "categories_count": 7},
+        {"id": "J", "name": "Governance", "categories_count": 3}
+    ],
+    "assessment_process": {
+        "steps": [
+            {
+                "step": "Characterization",
+                "input": "Design/Experimental data",
+                "output": "Indicator values"
+            },
+            {
+                "step": "Normalization",
+                "input": "Indicator values",
+                "output": "Normalized scores (-1 to +5)"
+            },
+            {
+                "step": "Aggregation",
+                "input": "Normalized scores",
+                "output": "Final concise score"
+            }
+        ],
+        "scoring_scale": {
+            "-1": "Under minimum acceptable performance",
+            "0": "Minimum acceptable performance (Benchmark)",
+            "3": "Best practice",
+            "5": "Excellent and ideal performance"
+        }
+    },
+    "contextualization": {
+        "description": "تطبیق ابزار با شرایط محلی (اقلیم، اقتصاد، فرهنگ)",
+        "steps": ["Selection of criteria", "Benchmarking", "Weighting"]
+    },
+    "sample_criteria": [
+        {"id": "A1.1", "name": "Population density", "unit": "Inhabitants/km2"},
+        {"id": "C2.2", "name": "Efficiency in water use", "unit": "%"},
+        {"id": "E1.2", "name": "Particulate matter (PM10) concentration", "unit": "days/yr"}
+    ]
+}
+
+file_path = 'sntool_database.json'
+with open(file_path, 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=4)
+
+print(file_path)
